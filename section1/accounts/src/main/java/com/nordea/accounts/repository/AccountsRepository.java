@@ -3,7 +3,9 @@ package com.nordea.accounts.repository;
 
 import com.nordea.accounts.entity.Accounts;
 import com.nordea.accounts.entity.Customer;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -11,7 +13,10 @@ import java.util.Optional;
 @Repository
 public interface AccountsRepository extends JpaRepository<Accounts, Long> {
 
-    Optional<Customer> findByMobileNumber(String mobileNumber);
+    Optional<Accounts> findByCustomerId(Long customerId);
 
+    @Transactional
+    @Modifying
+    void deleteByCustomerId(Long customerId);
 
 }

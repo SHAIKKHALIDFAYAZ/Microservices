@@ -1,4 +1,4 @@
-package com.nordea.accounts.entity;
+package com.eazybytes.loans.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
@@ -26,14 +26,15 @@ public class BaseEntity {
     private LocalDateTime createdAt;
 
     @CreatedBy
-    @Column(insertable = false)
-    private LocalDateTime updatedAt;
-
-    @LastModifiedDate
     @Column(updatable = false)
     private String createdBy;
+
+    @LastModifiedDate
+    @Column(insertable = false)
+    private LocalDateTime updatedAt;
 
     @LastModifiedBy
     @Column(insertable = false)
     private String updatedBy;
+
 }
